@@ -1,28 +1,32 @@
 import React from "react";
+import managudiImg from './images/MGLogos.png';
+import ourcommunityImg from './images/ourCommunity.png';
+import lmsImg from './images/ourCommunity.png';
+import directfarmImg from './images/DirectFarmslogos.png';
 
 const SITES = [
   {
     title: "Managudi",
     url: "https://managudi.in/",
-    image: "/images/MGLogos.png",
-    description: "A comprehensive platform for managing agricultural resources."
+    image: managudiImg,
+    description: "Mana Gudi is an online platform that helps devotees connect with temples."
   },
   {
     title: "Our Community",
     url: "https://ourcommunity.in/",
-    image: "/images/ourCommunity.png",
-    description: "Building stronger communities through collaborative tools."
+    image: ourcommunityImg,
+    description: "Our Community is a platform that connects people and supports collective growth."
   },
   {
     title: "lms Board",
     url: "https://lms.xlligent-demos.com/",
-    image: "/images/ourCommunity.png",
+    image: lmsImg,
     description: "Modern learning management system for educational institutions."
   },
   {
     title: "Direct Farm",
     url: "https://direct-farms.com/",
-    image: "/images/DirectFarmslogos.png",
+    image: directfarmImg,
     description: "Connecting consumers directly with local farmers."
   },
 ];
@@ -49,25 +53,32 @@ export default function ShowcaseGrid() {
               href={site.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative block overflow-hidden rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300"
+              className="group relative block bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300"
             >
-              {/* Image */}
-              <div className="relative h-64 w-full">
+              {/* Image container with white background */}
+              <div className="relative h-64 w-full bg-white p-6">
                 <img
                   src={site.image}
                   alt={site.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
-                
-                {/* Overlay - appears on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                  <h3 className="text-white text-xl font-bold mb-2">
-                    {site.title}
-                  </h3>
-                  <p className="text-white/90 text-sm leading-relaxed">
-                    {site.description}
-                  </p>
-                </div>
+              </div>
+
+              {/* Title and author - always visible */}
+              <div className="p-4 bg-white">
+                <h3 className="text-gray-900 font-semibold text-lg mb-1">
+                  {site.title}
+                </h3>
+                <p className="text-gray-500 text-sm">
+                  {site.author}
+                </p>
+              </div>
+
+              {/* Description - only visible on hover */}
+              <div className="absolute bottom-0 left-0 right-0 bg-white p-4 border-t border-gray-200 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                <p className="text-gray-900 text-xs font-bold leading-relaxed font-sans">
+                  {site.description}
+                </p>
               </div>
             </a>
           ))}
