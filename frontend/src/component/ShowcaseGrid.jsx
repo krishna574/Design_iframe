@@ -1,7 +1,7 @@
 import React from "react";
 import managudiImg from './images/MGLogos.png';
 import ourcommunityImg from './images/ourCommunity.png';
-import lmsImg from './images/ourCommunity.png';
+import lmsImg from './images/lmslogo_lang (1).png';
 import directfarmImg from './images/DirectFarmslogos.png';
 
 const SITES = [
