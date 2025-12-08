@@ -33,23 +33,22 @@ export default function Header() {
               About 
             </Link>
             
-            {/* Templates Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => setIsTemplatesOpen(true)}
-              onMouseLeave={() => setIsTemplatesOpen(false)}
-            >
-              <button className="flex items-center text-gray-700 font-medium hover:text-gray-900 transition-colors">
+            {/* Templates Dropdown - CLICK VERSION */}
+            <div className="relative">
+              <button 
+                className="flex items-center text-gray-700 font-medium hover:text-gray-900 transition-colors"
+                onClick={() => setIsTemplatesOpen(!isTemplatesOpen)}
+              >
                 Templates
                 <ChevronDown className="w-4 h-4 ml-1" />
               </button>
               
-              {/* Dropdown Menu */}
               {isTemplatesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50">
+                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 border border-gray-100 z-50">
                   <Link 
                     to="/templates/direct-farm" 
-                    className="block px-4 py-2 text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 transition-colors"
+                    className="block px-4 py-3 text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 transition-colors"
+                    onClick={() => setIsTemplatesOpen(false)}
                   >
                     Direct Farm
                   </Link>
