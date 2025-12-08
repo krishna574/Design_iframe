@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import companyLogo from './images/XlligentUSA_LOGO.png';
 import { Link } from 'react-router-dom';
 import { ChevronDown, Globe } from 'lucide-react';
+
 export default function Header() {
+  const [isTemplatesOpen, setIsTemplatesOpen] = useState(false);
+
   return (
     <header className="shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -9,12 +13,12 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center">
             <div className="flex flex-col items-center">
-            <div className="w-32 h-100 bg-gradient-to-b from-white via-white to-white rounded-sm relative">
+              <div className="w-32 h-100 bg-gradient-to-b from-white via-white to-white rounded-sm relative">
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <img
-                        src={companyLogo}
-                        alt="Xlligent USA"
-                    />
+                  <img
+                    src={companyLogo}
+                    alt="Xlligent USA"
+                  />
                 </div>
               </div>
             </div>
@@ -25,17 +29,37 @@ export default function Header() {
             <Link to="/" className="text-cyan-400 font-medium hover:text-cyan-500 transition-colors">
               Home
             </Link>
-            <button className="flex items-center text-gray-700 font-medium hover:text-gray-900 transition-colors">
+            <Link to="/about" className="text-gray-700 font-medium hover:text-gray-900 transition-colors">
               About 
-            </button>
-            <button className="flex items-center text-gray-700 font-medium hover:text-gray-900 transition-colors">
-              Templates
-              <ChevronDown className="w-4 h-4 ml-1" />
-            </button>
+            </Link>
+            
+            {/* Templates Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsTemplatesOpen(true)}
+              onMouseLeave={() => setIsTemplatesOpen(false)}
+            >
+              <button className="flex items-center text-gray-700 font-medium hover:text-gray-900 transition-colors">
+                Templates
+                <ChevronDown className="w-4 h-4 ml-1" />
+              </button>
+              
+              {/* Dropdown Menu */}
+              {isTemplatesOpen && (
+                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50">
+                  <Link 
+                    to="/templates/direct-farm" 
+                    className="block px-4 py-2 text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 transition-colors"
+                  >
+                    Direct Farm
+                  </Link>
+                </div>
+              )}
+            </div>
+
             <Link to="/pricing" className="text-gray-700 font-medium hover:text-gray-900 transition-colors">
               Pricing
             </Link>
-            {/* FIX: route link (no hash) */}
             <Link to="/contact" className="text-gray-700 font-medium hover:text-gray-900 transition-colors">
               Contact
             </Link>
