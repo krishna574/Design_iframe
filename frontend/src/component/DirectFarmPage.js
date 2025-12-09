@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import lmsImg from './images/lmslogo_lang (1).png';
 export default function DirectFarmPage() {
   const [hoveredCard, setHoveredCard] = useState(null);
 
@@ -22,6 +22,7 @@ export default function DirectFarmPage() {
     id: 3,
     name: "LMS Board",
     logo: "🌳",
+    image: lmsImg,
     description: "Learning Management System for educational institutions",
     color: "bg-white"
   },
@@ -150,9 +151,20 @@ export default function DirectFarmPage() {
                     {/* Logo and Name - Always Visible */}
                     <div className={`transition-all duration-300 ${hoveredCard === project.id ? 'transform -translate-y-4' : ''}`}>
                       {/* Logo */}
-                      <div className={`text-8xl mb-4 transition-transform duration-300 ${hoveredCard === project.id ? 'scale-90' : ''}`}>
-                        {project.logo}
-                      </div>
+                      <div
+                          className={`mb-4 transition-transform duration-300 hoveredCard === project.id ? "scale-90" : ""
+                        }`}>
+                   {project.image ? (
+                         <img
+                      src={project.image}
+                     alt={project.name}
+                          className="w-50 h-60 object-contain"
+                                />
+                          ) : (
+                    <div className="text-8xl">{project.logo}</div>
+                      )}
+                    </div>
+
                       
                       {/* Project Name */}
                       <h3 className={`text-2xl font-bold text-center ${hasColoredBg ? 'text-white' : 'text-gray-800'}`}>
